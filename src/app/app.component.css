@@ -1,0 +1,16 @@
+.nav a {
+    font-size: 1.2em !important;
+    display: inline-block;
+}
+
+.nav-home h1 {
+    font-size: 3.5em !important;
+}
+
+.nav-home p {
+    font-size: 1.2em !important;
+}
+
+.nav {
+    align-items: center;
+}
