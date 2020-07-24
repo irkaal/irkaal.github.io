@@ -3,3 +3,7 @@
 body {
     background: linear-gradient(rgba(255, 255, 255, .99), rgba(255, 255, 255, 1)), url("assets/background2.jpg");
 }
+
+a {
+    color: black;
+}

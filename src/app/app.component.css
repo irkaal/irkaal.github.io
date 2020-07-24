@@ -1,3 +1,7 @@
+.nav {
+    align-items: center;
+}
+
 .nav a {
     font-size: 1.2em !important;
     display: inline-block;
@@ -5,12 +9,18 @@
 
 .nav-home h1 {
     font-size: 3.5em !important;
+    color: black;
 }
 
 .nav-home p {
     font-size: 1.2em !important;
+    color: black;
 }
 
-.nav {
-    align-items: center;
+.footer {
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
 }
