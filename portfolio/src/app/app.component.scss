@@ -1,0 +1,46 @@
+a {
+  color: black !important;
+}
+
+.nav {
+  align-items: center;
+
+  a {
+    font-size: 1.2em !important;
+    display: inline-block;
+  }
+
+  .nav-brand {
+    h1, p {
+      color: black;
+    }
+    
+    h1 {
+      font-size: 3em !important;
+    }
+
+    p {
+      font-size: 1em !important;
+    }
+  }
+}
+
+.footer {
+  padding: 2rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: #999 !important;
+
+    &:hover {
+      color: #007bff !important;
+    }
+  }
+}

@@ -1,26 +1,28 @@
-<div class="container py-5 h-100 w-100">
-    <nav class="nav">
+<div class="d-flex h-100 flex-column">
+  <div class="container pt-4">
+    <header class="mb-auto">
+      <nav class="nav">
         <span>
-            <a class="nav-link nav-home pb-0" href="#">
-                <h1>Alvin N.</h1>
+            <a class="nav-link nav-brand pb-2" href="#" routerLink="/">
+                <h1 class="display-1"><strong>Alvin</strong> N.</h1>
                 <p>Data Scientist</p>
             </a>
         </span>
         <span class="mr-auto"></span>
         <div>
-            <a class="nav-link text-muted">Résumé</a>
-            <a class="nav-link" href="https://www.kaggle.com/irkaal"><i class="fab fa-kaggle"></i></a>
-            <a class="nav-link" href="https://github.com/irkaal"><i class="fab fa-github"></i></a>
-            <a class="nav-link" href="https://www.linkedin.com/in/alvin-n"><i class="fab fa-linkedin"></i></a>
-            <a class="nav-link text-muted">αstro</a>
+            <!-- <a class="nav-link" href="#" [routerLink]="['blog']">Blog</a> -->
+            <a class="nav-link" href="https://github.com/irkaal" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a class="nav-link" href="https://www.kaggle.com/irkaal" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-kaggle"></i></a>
+            <a class="nav-link" href="https://www.linkedin.com/in/alvin-n" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-linkedin"></i></a>
         </div>
-    </nav>
-</div>
-
-<router-outlet></router-outlet>
-
-<footer class="footer">
-    <div class="container py-3">
-        <span class="text-muted">Made with <i class="fab fa-angular"></i> and <i class="fab fa-bootstrap"></i> · <a href="https://github.com/irkaal/irkaal.github.io">Source Code</a></span>
+      </nav>
+    </header>
+    <div [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
-</footer>
+  </div>
+  <footer class="footer mt-auto w-100">
+    <p>Created with <a href="https://angular.io/"><i class="fab fa-angular"></i></a> · <a href="https://github.com/irkaal/irkaal.github.io">Code</a></p>
+    <p>Last Modified: {{ lastModified }}</p>
+  </footer>
+</div>

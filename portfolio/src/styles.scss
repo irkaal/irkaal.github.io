@@ -1,0 +1,16 @@
+html * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+  
+  &:hover {
+    color: #007bff !important;
+  }
+}
