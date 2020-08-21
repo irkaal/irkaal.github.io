@@ -1,0 +1,18 @@
+<div class="d-flex w-100 h-100 flex-column">
+  <div class="container pt-4">
+    <div class="nav-scroller py-1 mb-2">
+      <nav class="nav d-flex justify-content-between border-top">
+        <span class="p-2 text-muted">Data Science</span>
+        <span class="p-2 text-muted">Data Visualization</span>
+        <span class="p-2 text-muted">R Programming</span>
+      </nav>
+    </div>
+    <ul aria-label="Blog posts">
+      <li *ngFor="let blog of $blogPosts | async">
+        <a [routerLink]="blog.route">
+          {{blog.title}} {{blog.authorName}} {{blog.date}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

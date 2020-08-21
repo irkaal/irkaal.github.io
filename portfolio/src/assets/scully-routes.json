@@ -1,1 +1,1 @@
-[{"route":"/"}]
+[{"route":"/"},{"route":"/blog"},{"route":"/blog/test-post-2","title":"Test post 2","description":"This is a post description 2","authorName":"Alvin 2","date":"2020-08-10","published":true,"sourceFile":"test-post-2.md"},{"route":"/blog/test-post","title":"Test post","description":"This is a post description","authorName":"Alvin","date":"2020-08-14","published":true,"sourceFile":"test-post.md"}]

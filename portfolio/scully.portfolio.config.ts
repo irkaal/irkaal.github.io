@@ -5,5 +5,11 @@ export const config: ScullyConfig = {
   pluginDir: './scully/plugins/',
 outDir: './dist/static',
   routes: {
+    '/blog/:postId': {
+      type: 'contentFolder',
+      postId: {
+        folder: "./blog"
+      }
+    }
   }
 };

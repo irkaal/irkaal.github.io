@@ -4,11 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
-// import { BlogComponent } from './resume/blog.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, data: { animation: 'HomePage' } },
-    // { path: 'blog', component: BlogComponent, data: { animation: 'BlogPage' } }
+    { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
 ];
 
 @NgModule({
