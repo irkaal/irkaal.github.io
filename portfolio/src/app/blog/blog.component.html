@@ -7,12 +7,41 @@
         <span class="p-2 text-muted">R Programming</span>
       </nav>
     </div>
-    <ul aria-label="Blog posts">
+    <!-- <ul aria-label="Blog posts">
       <li *ngFor="let blog of $blogPosts | async">
         <a [routerLink]="blog.route">
           {{blog.title}} {{blog.authorName}} {{blog.date}}
         </a>
       </li>
-    </ul>
+    </ul> -->
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col blog-main">
+            <div class="blog-post pb-5" *ngFor="let blog of $blogPosts | async">
+              <h2 class="blog-post-title border-bottom">{{ blog.title }}</h2>
+              <p class="blog-post-meta">{{ blog.date }} by {{ blog.authorName }}</p>
+              <div class="float-left pr-3">
+                <img class="blog-post-thumbnail d-inline-block img-thumbnail rounded" src="{{ blog.picture }}">
+              </div>
+              <p>{{ blog.description }}</p>
+              <a [routerLink]="blog.route">Read more →</a>
+            </div>
+        </div>
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="font-italic">About</h4>
+            <p class="mb-0">Welcome.</p>
+          </div>
+          <!-- <div class="p-4">
+            <h4 class="font-italic">Archives</h4>
+            <ol class="list-unstyled mb-0">
+              <li *ngFor="let label of archiveLabels">
+                <a class="text-muted disabled">{{ label }}</a>
+              </li>
+            </ol>
+          </div> -->
+        </aside>
+      </div>
+    </main>    
   </div>
 </div>
