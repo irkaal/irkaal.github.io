@@ -27,9 +27,7 @@
               "src/styles.scss",
               "src/prism.tomorrownight80s.css"
             ],
-            "scripts": [
-              "src/prism.r.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

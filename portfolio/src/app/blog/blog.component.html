@@ -11,10 +11,12 @@
       <div class="row">
         <div class="col blog-main">
             <div class="blog-post pb-5" *ngFor="let blog of $blogPosts | async">
-              <h2 class="blog-post-title border-bottom">{{ blog.title }}</h2>
+              <a [routerLink]="blog.route">
+                <h2 class="blog-post-title border-bottom">{{ blog.title }}</h2>
+              </a>
               <p class="blog-post-meta">{{ blog.date }} by {{ blog.authorName }}</p>
               <div class="float-left pr-3">
-                <img class="blog-post-thumbnail d-inline-block img-thumbnail rounded" src="{{ blog.picture }}">
+                <img class="blog-post-thumbnail d-inline-block img-thumbnail rounded" src="{{ blog.thumbnail }}">
               </div>
               <p>{{ blog.description }}</p>
               <a [routerLink]="blog.route">Read more →</a>
