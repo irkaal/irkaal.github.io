@@ -1,11 +1,28 @@
 .blog-post {
-    code, pre {
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    }
-    
-    pre {
-        padding: 16px;
-        overflow: auto;
-        background-color: #f6f8fa;
-    }
+  font-size: 1.2rem;
+  max-width: 800px;
+
+  button, code {
+    font-size: 85%;
+  }
+  
+  h1, pre {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-top: 3rem;
+  }
+  
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  img, pre {
+    border-radius: .25rem;
+  }
 }

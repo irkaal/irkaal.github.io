@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/prism.tomorrownight80s.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/prism.r.js"
+            ]
           },
           "configurations": {
             "production": {
