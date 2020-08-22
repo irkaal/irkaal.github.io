@@ -1,0 +1,11 @@
+.blog-post {
+    code, pre {
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    }
+    
+    pre {
+        padding: 16px;
+        overflow: auto;
+        background-color: #f6f8fa;
+    }
+}
