@@ -1,1 +1,1 @@
-[{"route":"/"}]
+[{"route":"/"},{"route":"/blog"},{"route":"/blog/tibble-a-simple-data-frame-in-r","title":"tibble: A Simple Data Frame in R","description":"The tibble package provides a modern alternative to data frame by keeping only what works. In other words, it is a simpler and improved data frame. Here's why.","authorName":"Alvin N.","date":"30 Aug. 2020","thumbnail":"assets/blog/tibble-a-simple-data-frame-in-r/tibble.png","published":true,"sourceFile":"tibble-a-simple-data-frame-in-r.md"}]
