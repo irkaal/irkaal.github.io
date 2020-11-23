@@ -1,0 +1,23 @@
+html, body {
+  height: 100%
+}
+
+a {
+  text-decoration: underline;
+  color: black !important;
+  
+  &:hover {
+    color: #007bff !important;
+  }
+}
+
+@import '~prismjs/plugins/toolbar/prism-toolbar.css';
+div.toolbar {
+  padding-right: 7px;
+
+  div.toolbar-item > button {
+    padding-bottom: 4px;
+  }
+}
+
+@import '~bootstrap/dist/css/bootstrap.min.css';

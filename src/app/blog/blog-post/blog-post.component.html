@@ -1,0 +1,18 @@
+<div *ngIf="$postMetadata | async as post" class="blog-post container py-4">
+  <h1>{{ post.title }}</h1>
+  <div class="author d-flex">
+    <div>
+      <img class="avatar" src="assets/blog/profile.webp" alt="{{ post.authorName }}">
+    </div>
+    <div class="pl-3 text-truncate">
+      <div class="text-truncate">by {{ post.authorName }}</div>
+      <span>{{ post.date }}</span>
+    </div>
+  </div>
+  <p>
+    <img class="rounded w-100" src="{{ post.thumbnail }}">
+  </p>
+  <div class="blog-md">
+    <scully-content></scully-content>
+  </div>
+</div>

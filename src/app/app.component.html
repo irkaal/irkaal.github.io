@@ -1,0 +1,23 @@
+<div class="app-content" fxLayout="column">
+  <header class="container border-bottom">
+    <nav class="nav">
+      <span>
+          <a class="nav-link nav-brand pb-2" [routerLink]="['']">
+              <h1 class="display-1"><strong>Alvin</strong> N.</h1>
+          </a>
+      </span>
+      <span class="mr-auto"></span>
+      <div>
+          <a class="nav-link" title="Personal Blog" [routerLink]="['blog']">Blog</a>
+          <a class="nav-link" title="GitHub" href="https://github.com/irkaal">GitHub</a>
+          <a class="nav-link" title="LinkedIn" href="https://www.linkedin.com/in/alvin-n">LinkedIn</a>
+      </div>
+    </nav>
+  </header>
+  <div fxFlex>
+      <router-outlet></router-outlet>
+  </div>
+  <footer>
+    <p class="px-3">2020. Built using <a href="https://angular.io/" title="Angular">Angular</a> and <a href="https://scully.io/" title="Scully">Scully</a></p>
+  </footer>
+</div>
