@@ -1,17 +1,15 @@
 ---
-title: 'tibble: A Simple Data Frame in R'
+title: "tibble: A Simple Data Frame in R"
 description: The tibble package provides a modern alternative to data frame by keeping only what works. In other words, it is a simpler and improved data frame. Here's why.
 authorName: Alvin N.
-date: '30 Aug. 2020'
-thumbnail: 'assets/blog/tibble-a-simple-data-frame-in-r/tibble.webp'
+date: "30 Aug. 2020"
+thumbnail: "assets/blog/tibble-a-simple-data-frame-in-r/tibble.webp"
 published: true
 ---
 
-
-
 ## What is a tibble?
 
-According to the tibble [documentation](https://tibble.tidyverse.org), a tibble, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not. 
+According to the tibble [documentation](https://tibble.tidyverse.org), a tibble, or `tbl_df`, is a modern reimagining of the `data.frame`, keeping what time has proven to be effective, and throwing out what is not.
 
 ### Why "tibble"?
 
@@ -23,8 +21,7 @@ On the other hand, maybe it's New Zealand for data frame &#128517;.
 
 <iframe class="p-3" src="https://www.youtube.com/embed/gjpNEVcG1nU?start=505" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Joking aside, I believe a tibble is a simple data frame that improves on the behavior of the traditional data frame through [inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)).
-
+Joking aside, I believe a tibble is a simple data frame that improves on the behavior of the traditional data frame through [inheritance](<https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)>).
 
 ## The `tbl_df` class
 
@@ -41,20 +38,17 @@ The `tbl_df` class inherits from the `tbl` class which in turn inherits from the
 
 This allows `tbl_df` to behave like a `data.frame` and to alter the behaviors of a traditional data frame, such as printing and subsetting.
 
-
-
 ## Creating a tibble
 
 There are different ways to create a tibble. The common ways are through the `tibble()` and `tribble()` functions.
 
-I will create the following table using the two functions: 
+I will create the following table using the two functions:
 
-|x| y|
-|-|--|
-|1| 4|
-|2| 5|
-|3| 6|
-
+| x   | y   |
+| --- | --- |
+| 1   | 4   |
+| 2   | 5   |
+| 3   | 6   |
 
 ### Creating using `tibble()`
 
@@ -107,7 +101,6 @@ tribble(
 
 We use the `~name` syntax in the first row for the column names and followed by the value rows.
 
-
 ### Repairing column names
 
 By default, `data.frame()` munges duplicate column names to produce unique names:
@@ -134,6 +127,7 @@ tibble(x = 1:3, x = 4:6)
 By default, `.name_repair` is set to `"check_unique"` which just ensures that there are unique columns and does not attempt to repair if there are non-unique column names.
 
 Other than `"check_unique"`, `.name_repair` accepts the following values:
+
 - `"minimal"`: allows duplicate column names
 - `"unique"`: generates non-empty unique names
 - `"universal"`: generates unique and syntactic names
@@ -156,7 +150,7 @@ tibble(`x var` = 1:3, `x var` = 4:6, .name_repair = "unique")
 #> 3           3           6
 ```
 
-Notice how the whitespace between `x` and `var` is preserved and the column names, ``x var...1`` and ``x var...2``, are still non-syntactic.
+Notice how the whitespace between `x` and `var` is preserved and the column names, `x var...1` and `x var...2`, are still non-syntactic.
 
 Using `.name_repair = "universal"`:
 
@@ -174,8 +168,6 @@ tibble(`x var` = 1:3, `x var` = 4:6, .name_repair = "universal")
 ```
 
 Now the columns have syntactic names, `x.var...1` and `x.var...2`.
-
-
 
 ### Using list-columns
 
@@ -204,12 +196,11 @@ tibble(
   )
 )
 #> # A tibble: 2 x 1
-#>   x               
-#>   <list>          
+#>   x
+#>   <list>
 #> 1 <tibble [3 x 2]>
 #> 2 <tibble [3 x 2]>
 ```
-
 
 ## Coercing to a tibble
 
@@ -261,7 +252,7 @@ as_tibble_row(1:3)
 ```
 
 Oops! Vectors does not contain any column names!
-Just like `tibble()`, the `as_tibble()`, `as_tibble_col()`, and `as_tibble_row()` has a  `.name_repair` argument for fixing column names dynamically.
+Just like `tibble()`, the `as_tibble()`, `as_tibble_col()`, and `as_tibble_row()` has a `.name_repair` argument for fixing column names dynamically.
 
 In this case, we want it to repair our column names by generating unique names:
 
@@ -276,7 +267,6 @@ as_tibble_row(1:3, .name_repair = "unique")
 #>   <int> <int> <int>
 #> 1     1     2     3
 ```
-
 
 ### Preserving row names
 
@@ -328,8 +318,6 @@ as_tibble(mtcars, rownames = "car")
 #> # ... with 22 more rows
 ```
 
-
-
 ## Printing a tibble
 
 Unlike the traditional data frame, only the first ten rows and columns that fit on your screen's width are printed when printing a tibble.
@@ -358,8 +346,6 @@ Furthermore, tibble provides information on the remaining row count and column n
 
 This makes it convenient when we want to quickly inspect our dataset.
 
-
-
 ## Glimpsing a tibble
 
 The tibble package provides many helper functions, one of which is the `glimpse()` function.
@@ -384,8 +370,6 @@ glimpse(as_tibble(mtcars))
 `glimpse()` is similar to `str()` or a transposed `print()`. It allows us to inspect all the columns in the dataset and get basic information about the dimensions of the data.
 
 This can be helpful when we have data with a lot of columns. Moreover, this function works with traditional data frames too!
-
-
 
 ## Subsetting a tibble
 
@@ -454,7 +438,6 @@ as_tibble(BOD)[, "Time", drop = TRUE]
 #> [1] 1 2 3 4 5 7
 ```
 
-
 ## Partial matching
 
 Traditional data frames support partial column matching through the `$` and `[[` operators.
@@ -481,7 +464,7 @@ With tibble, partial column name matching is not supported and doing so will giv
 as_tibble(BOD)$T
 #> NULL
 #> Warning message:
-#> Unknown or uninitialised column: `T`. 
+#> Unknown or uninitialised column: `T`.
 ```
 
 Moreover, the `exact` argument will be ignored when using the `[[` operator.
@@ -492,8 +475,6 @@ as_tibble(BOD)[["T", exact = FALSE]]
 #> Warning message:
 #> `exact` ignored.
 ```
-
-
 
 ## Summary
 
@@ -506,8 +487,6 @@ as_tibble(BOD)[["T", exact = FALSE]]
 - tibble prints nicely according to your screen's width
 - tibble stays as tibble, even when accessing a single column
 - tibble does not support partial matching for column names
-
-
 
 ## Sources
 

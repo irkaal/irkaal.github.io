@@ -19,23 +19,15 @@
 }
 
 .blog-md {
-  a {
-    text-decoration: underline !important;
-    // color: black !important;
-    
-    // &:hover {
-    //   color: #007bff !important;
-    // }
-  }
-
-  button, code {
+  button,
+  code {
     font-size: 90%;
   }
 
   h2 {
     margin-top: 5rem;
   }
-  
+
   h3 {
     margin-top: 3rem;
   }
@@ -52,8 +44,9 @@
     padding: 1rem;
   }
 
-  img, pre {
-    border-radius: .25rem;
+  img,
+  pre {
+    border-radius: 0.25rem;
   }
 
   p {
@@ -64,11 +57,14 @@
     margin-bottom: 1rem;
   }
 
-  table, th, td {
+  table,
+  th,
+  td {
     border: 1px solid black;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.5rem 2rem 0.5rem 2rem;
   }
 }

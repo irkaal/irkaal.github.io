@@ -1,54 +1,24 @@
-.app-content {
-  position: absolute;
-  top: 24px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  min-width: 330px;
+div.container {
+  min-width: 320px;
+  max-width: 1200px;
 
-  header {
-    .nav {
-      align-items: center;
-    
-      a {
-        text-decoration: none;
-        font-size: 1.2em !important;
-        display: inline-block;
-      }
-    
-      .nav-brand {
-        h1, p {
-          color: black;
-        }
-        
-        h1 {
-          font-size: 3em !important;
-        }
-    
-        p {
-          font-size: 1em !important;
-        }
-      }
-    }
-  }
+  nav {
+    height: 150px;
 
-  footer {
-    width: 100%;
-    padding: 2rem 0;
-    color: #999;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-top: .05rem solid #e5e5e5;
-    
-    p:last-child {
-      margin-bottom: 0;
-    }
-  
     a {
-      color: #999 !important;
-  
-      &:hover {
-        color: #007bff !important;
+      font-weight: 500;
+    }
+
+    a.nav-brand {
+      background-image: none;
+      transition: none;
+
+      h1 {
+        font-weight: 700;
+      }
+
+      h5 {
+        font-weight: 400;
       }
     }
   }

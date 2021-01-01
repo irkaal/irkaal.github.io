@@ -1,23 +1,29 @@
-<div class="app-content" fxLayout="column">
-  <header class="container border-bottom">
-    <nav class="nav">
-      <span>
-          <a class="nav-link nav-brand pb-2" [routerLink]="['']">
-              <h1 class="display-1"><strong>Alvin</strong> N.</h1>
-          </a>
-      </span>
-      <span class="mr-auto"></span>
-      <div>
-          <a class="nav-link" title="Personal Blog" [routerLink]="['blog']">Blog</a>
-          <a class="nav-link" title="GitHub" href="https://github.com/irkaal">GitHub</a>
-          <a class="nav-link" title="LinkedIn" href="https://www.linkedin.com/in/alvin-n">LinkedIn</a>
+<div class="container d-flex flex-column h-100">
+  <header class="border-bottom">
+    <nav class="nav d-flex align-items-center">
+      <a class="nav-brand nav-link d-flex flex-column" routerLink>
+        <h1>Alvin N.</h1>
+        <h5>Software Engineer</h5>
+      </a>
+      <div class="flex-grow-1"></div>
+      <div class="d-flex">
+        <a class="nav-link" routerLink fragment="code">Code</a>
+        <a class="nav-link" routerLink fragment="contact">Contact</a>
+        <a class="nav-link" [routerLink]="['blog']">Blog</a>
       </div>
     </nav>
   </header>
-  <div fxFlex>
-      <router-outlet></router-outlet>
-  </div>
-  <footer>
-    <p class="px-3">2020. Built using <a href="https://angular.io/" title="Angular">Angular</a> and <a href="https://scully.io/" title="Scully">Scully</a></p>
+
+  <router-outlet></router-outlet>
+
+  <footer class="mt-auto border-top">
+    <div class="py-5 text-center">
+      <div class="mb-2">Copyright © 2021 Alvin N.</div>
+      <div>
+        Made with
+        <img src="assets/angular.webp" alt="angular" height="30px" />
+        <img src="assets/scully.webp" alt="scully" height="30px" />
+      </div>
+    </div>
   </footer>
 </div>

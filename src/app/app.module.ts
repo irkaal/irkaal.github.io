@@ -1,27 +1,25 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { NgxMasonryModule } from 'ngx-masonry';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NotFoundComponent
-  ],
+  declarations: [AppComponent, AboutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgxMasonryModule,
     ScullyLibModule,
-    FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
