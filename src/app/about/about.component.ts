@@ -1,13 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
-interface ProjectItem {
-  name: string;
-  description: string;
-  homepage?: string;
-  repository: string;
-  image: string;
-}
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { BaseChartDirective, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-about',
@@ -15,94 +9,26 @@ interface ProjectItem {
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  public projectItems: ProjectItem[] = [
+  public lineChartData: ChartDataSets[] = [];
+  public lineChartLabels: Label[] = [];
+  public lineChartOptions: ChartOptions = {
+    elements: { line: { tension: 0 } },
+    responsive: true,
+    scales: { xAxes: [{ type: 'time', time: { unit: 'month' } }] },
+  };
+  public lineChartColors = [
     {
-      name: 'Random Pantry 3',
-      description: `
-      Random Pantry 3 is an ongoing recipe sharing platform project that
-      leverages machine learning algorithms (collaborative filtering) to
-      provide personalized recipes recommendations to each user. This is
-      a complete rewrite of Random Pantry in Python and TypeScript which
-      aims to resolve problems and limitations that exist in the previous
-      version.
-      `,
-      repository: 'https://github.com/irkaal/randompantry3',
-      image: 'assets/randompantry3.webp',
-    },
-    {
-      name: 'Recruit Restaurant Visitor Forecasting',
-      description: `
-      In this ongoing project, I predicted how many future visitors a restaurant will
-      receive using SARIMA, Random Forest and Gradient Boosting Machine in R.
-      `,
-      repository:
-        'https://github.com/irkaal/recruit-restaurant-visitor-forecasting',
-      image: 'assets/recruit-restaurant-visitor-forecasting.webp',
-    },
-    {
-      name: 'Food.com - Recipes and Reviews',
-      description: `
-      This kaggle dataset is over 1GB in size and contains data on over 500,000
-      recipes and 1,400,000 reviews from Food.com site. The collection
-      methodology is web scraping with rvest in R combined with furrr which
-      allows for parallel execution of mapping functions using future.
-      This is the main dataset used in Random Pantry 3.
-      `,
-      homepage: 'https://www.kaggle.com/irkaal/foodcom-recipes-and-reviews',
-      repository: 'https://github.com/irkaal/foodcom-recipes-and-reviews',
-      image: 'assets/foodcom-recipes-and-reviews.webp',
-    },
-    {
-      name: 'Triangulr',
-      description: `
-      The goal of this package is to be a high-performance alternative to
-      the popular triangle package in R. Triangulr provides functions for
-      the triangular distribution that are implemented in C++ with support
-      for Xoroshiro128+ random generator through the dqrng package.
-      Currently, I am continuously maintaining and improving the package.
-      `,
-      homepage: 'https://irkaal.github.io/triangulr',
-      repository: 'https://github.com/irkaal/triangulr',
-      image: 'assets/triangulr.webp',
-    },
-    {
-      name: 'User Segmentation (Winners of Challenge 2)',
-      description: `
-      In this hackathon project, I worked collaboratively to segment users
-      into meaningful groups based on their comments on Hacker News. This
-      winning solution can guide business decisions to better target audiences
-      and increase active time.
-      `,
-      homepage: 'https://irkaal.github.io/user-segmentation',
-      repository: 'https://github.com/irkaal/user-segmentation',
-      image: 'assets/user-segmentation.webp',
-    },
-    {
-      name: 'San Francisco Crime Classification',
-      description: `
-      Before San Francisco’s technological and financial upturn, there was
-      actually a high rate in criminal activities. In this Application Bake
-      Off project, we have over 12 years of crime reports from across all of
-      San Francisco's neighborhoods, and we compare various Machine Learning
-      algorithms and their abilities to predict crime based on time and location.
-      The final model performed as well as the top 5% models on Kaggle.
-      I presented the project poster at B.C.’s AI Student Showcase 2019.
-      `,
-      homepage: 'https://irkaal.github.io/sf-crime',
-      repository: 'https://github.com/irkaal/sf-crime',
-      image: 'assets/sf-crime.webp',
-    },
-    {
-      name: 'Tidymodels',
-      description: `
-      Contributed to open-source packages in the tidymodels framework. These
-      packages provide tools for modeling and machine learning using tidyverse
-      principles in R.
-      `,
-      repository: 'https://github.com/tidymodels',
-      image: 'assets/tidymodels.webp',
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)',
     },
   ];
+  @ViewChild(BaseChartDirective, { static: true })
+  public chart: BaseChartDirective | undefined;
+  public pinnedRepos: { name: string; description: string }[] = [];
 
   constructor(private _httpClient: HttpClient) {}
 
@@ -114,23 +40,81 @@ export class AboutComponent implements OnInit {
       .subscribe(
         (htmlText: string) => {
           const parser = new DOMParser();
-          const docHtml = parser.parseFromString(htmlText, 'text/html');
-          const rects = docHtml.getElementsByTagName('rect');
-          const counts = Array.from(rects).map((rect: SVGRectElement) =>
-            Number(rect.attributes.getNamedItem('data-count')?.nodeValue)
-          );
-          const dates = Array.from(rects).map(
-            (rect: SVGRectElement) =>
-              new Date(
-                rect.attributes.getNamedItem('data-date')?.nodeValue as string
-              )
+          const docHtml: Document = parser.parseFromString(
+            htmlText,
+            'text/html'
           );
 
-          console.log(counts, dates);
+          this.updateLineChart(docHtml);
+          this.updatePinned(docHtml);
         },
         (error: any) => {
           console.log(error);
         }
       );
+  }
+
+  private updateLineChart(docHtml: Document) {
+    const rects = docHtml.getElementsByTagName('rect');
+
+    let timestamps = Array.from(rects).map(
+      (rect: SVGRectElement) =>
+        rect.attributes.getNamedItem('data-date')?.nodeValue as string
+    );
+    let contributions = Array.from(rects).map((rect: SVGRectElement) =>
+      Number(rect.attributes.getNamedItem('data-count')?.nodeValue)
+    );
+
+    const dateToSkip = new Date(timestamps[0]);
+    const monthYearToSkip = `${dateToSkip.getMonth()}_${dateToSkip.getUTCFullYear()}`;
+    const data = timestamps.reduce(
+      (data: any, dateString: string, index: number) => {
+        const date = new Date(`${dateString}T00:00`);
+        const monthYear = `${date.getMonth()}_${date.getUTCFullYear()}`;
+        if (monthYear === monthYearToSkip) {
+          return data;
+        }
+
+        if (monthYear in data) {
+          data[monthYear].push(contributions[index]);
+        } else {
+          data[monthYear] = [contributions[index]];
+        }
+        return data;
+      },
+      {}
+    );
+
+    const monthlyTimestamps = Object.keys(data).map((key: string) => {
+      const [month, year] = key.split('_');
+      return new Date(Number(year), Number(month), 1, 0, 0)
+        .toISOString()
+        .split('T')[0];
+    });
+    const totalContributions = Object.values(data).map((value: any) =>
+      value.reduce((acc: number, curr: number) => acc + curr, 0)
+    );
+
+    this.lineChartData = [
+      { data: totalContributions, label: 'Total Contributions' },
+    ];
+
+    this.lineChartLabels = monthlyTimestamps;
+  }
+
+  private updatePinned(docHtml: Document) {
+    const repoNames: string[] = Array.from(
+      docHtml.getElementsByClassName('repo')
+    ).map((span: Element) => span.innerHTML.trim());
+    const repoDescriptions: string[] = Array.from(
+      docHtml.getElementsByClassName('pinned-item-desc')
+    ).map((p: Element) => p.innerHTML.trim());
+
+    repoNames.forEach((name: string, index: number) => {
+      this.pinnedRepos.push({
+        name: name,
+        description: repoDescriptions[index],
+      });
+    });
   }
 }

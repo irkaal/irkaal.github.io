@@ -37,7 +37,8 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "ngx-masonry",
-              "prismjs"
+              "prismjs",
+              "chart.js"
             ]
           },
           "configurations": {
@@ -59,7 +60,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.1mb"
                 },
                 {
                   "type": "anyComponentStyle",
