@@ -1,57 +1,52 @@
-<div class="container-fluid" data-bs-spy="scroll">
+<div class="container-fluid">
   <section id="about">
-    <div>Hi!</div>
-    <div>
-      I'm Alvin, Software Engineer, and Statistics student at the University of
-      British Columbia.
-    </div>
-    <div>
-      I build web applications and leverage predictive models to solve problems.
-      In my free time, I enjoy contributing to open-source projects.
-    </div>
-  </section>
-
-  <section id="code">
-    <h2>Code</h2>
-
-    <ngx-masonry [ordered]="true" class="row row-cols-1 row-cols-md-3 g-4">
-      <div ngxMasonryItem class="col" *ngFor="let item of projectItems">
-        <div class="card h-100">
-          <img src="{{ item.image }}" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">
-              {{ item.description }}
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">
-              <a *ngIf="item.homepage" href="{{ item.homepage }}">Homepage</a>
-              <span *ngIf="item.homepage"> | </span>
-              <a href="{{ item.repository }}">Repository</a></small
-            >
-          </div>
-        </div>
+    <h2>Hi!</h2>
+    <img
+      class="img-thumbnail mb-5 me-3"
+      src="https://media-exp1.licdn.com/dms/image/C5603AQGQ1wzWGqjkGA/profile-displayphoto-shrink_200_200/0/1578016638674?e=1614816000&v=beta&t=zowt1Oyry6Kmde9kTQ0l9A7qL_m4gqAbCuWULxGZO1c"
+      alt="profile"
+    />
+    <div class="d-inline-block mb-5">
+      <div>
+        I'm Alvin, Software Engineer, and Statistics student at
+        <a href="https://www.ubc.ca/about/"
+          >The University of British Columbia</a
+        >.
       </div>
-    </ngx-masonry>
+      <div>
+        I build web applications and leverage predictive models to solve
+        problems.
+      </div>
+      <div class="mb-5">
+        In my free time, I enjoy contributing to open-source projects.
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <img
+          class="img-fluid"
+          src="https://github-readme-stats.vercel.app/api?username=irkaal&count_private=true&show_icons=true"
+          alt="github-readme-stats"
+        />
+      </div>
+      <div class="col">
+        <img
+          class="img-fluid"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=irkaal&layout=compact&langs_count=20"
+          alt="github-readme-stats"
+        />
+      </div>
+    </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-
     <div class="mb-5">
-      <div>alvin.nursalim@outlook.com</div>
+      <a href="mailto:alvin.nursalim@outlook.com">alvin.nursalim@outlook.com</a>
       <div>Vancouver, British Columbia, Canada</div>
     </div>
-
-    <a href="https://linkedin.com/in/alvin-n">
-      <button type="button" class="btn btn-outline-dark me-3">LinkedIn</button>
-    </a>
-    <a href="https://github.com/irkaal">
-      <button type="button" class="btn btn-outline-dark me-3">GitHub</button>
-    </a>
-    <a href="https://kaggle.com/irkaal">
-      <button type="button" class="btn btn-outline-dark">Kaggle</button>
-    </a>
+    <a class="me-3" href="https://linkedin.com/in/alvin-n">LinkedIn</a>
+    <a class="me-3" href="https://github.com/irkaal">GitHub</a>
+    <a href="https://kaggle.com/irkaal">Kaggle</a>
   </section>
 </div>

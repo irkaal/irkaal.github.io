@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 interface ProjectItem {
@@ -10,21 +9,21 @@ interface ProjectItem {
 }
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  selector: 'app-code',
+  templateUrl: './code.component.html',
+  styleUrls: ['./code.component.scss'],
 })
-export class AboutComponent implements OnInit {
+export class CodeComponent implements OnInit {
   public projectItems: ProjectItem[] = [
     {
       name: 'Random Pantry 3',
       description: `
       Random Pantry 3 is an ongoing recipe sharing platform project that
-      leverages machine learning algorithms (collaborative filtering) to
-      provide personalized recipes recommendations to each user. This is
-      a complete rewrite of Random Pantry in Python and TypeScript which
-      aims to resolve problems and limitations that exist in the previous
-      version.
+      leverages machine learning algorithms (collaborative filtering and
+      Truncated SVD with nearest neighbors) to provide personalized
+      recipes recommendations to each user. This is a complete rewrite of
+      Random Pantry in Python and TypeScript which aims to resolve
+      problems and limitations that exist in the previous version.
       `,
       repository: 'https://github.com/irkaal/randompantry3',
       image: 'assets/randompantry3.webp',
@@ -32,8 +31,9 @@ export class AboutComponent implements OnInit {
     {
       name: 'Recruit Restaurant Visitor Forecasting',
       description: `
-      In this ongoing project, I predicted how many future visitors a restaurant will
-      receive using SARIMA, Random Forest and Gradient Boosting Machine in R.
+      In this ongoing project, I predicted how many future visitors a
+      restaurant will receive using Random Forest, SARIMA and Gradient
+      Boosting Machines in Python and R.
       `,
       repository:
         'https://github.com/irkaal/recruit-restaurant-visitor-forecasting',
@@ -104,33 +104,7 @@ export class AboutComponent implements OnInit {
     },
   ];
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this._httpClient
-      .get('https://cors-anywhere.herokuapp.com/https://github.com/irkaal', {
-        responseType: 'text',
-      })
-      .subscribe(
-        (htmlText: string) => {
-          const parser = new DOMParser();
-          const docHtml = parser.parseFromString(htmlText, 'text/html');
-          const rects = docHtml.getElementsByTagName('rect');
-          const counts = Array.from(rects).map((rect: SVGRectElement) =>
-            Number(rect.attributes.getNamedItem('data-count')?.nodeValue)
-          );
-          const dates = Array.from(rects).map(
-            (rect: SVGRectElement) =>
-              new Date(
-                rect.attributes.getNamedItem('data-date')?.nodeValue as string
-              )
-          );
-
-          console.log(counts, dates);
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
-  }
+  ngOnInit(): void {}
 }
