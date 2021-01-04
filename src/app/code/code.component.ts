@@ -93,6 +93,16 @@ export class CodeComponent implements OnInit {
       image: 'assets/sf-crime.webp',
     },
     {
+      name: 'Personal Website & Blog',
+      description: `
+      This repository is the source of my personal portfolio and blog website,
+      <a href="https://irkaal.github.io">irkaal.github.io</a>. It uses a
+      Jamstack architecture with the help of Angular and Scully.
+      `,
+      repository: 'https://github.com/irkaal.github.io',
+      image: 'assets/irkaal.webp',
+    },
+    {
       name: 'Tidymodels',
       description: `
       Contributed to open-source packages in the tidymodels framework. These

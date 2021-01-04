@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
   ];
   @ViewChild(BaseChartDirective, { static: true })
   public chart: BaseChartDirective | undefined;
-  public pinnedRepos: { name: string; description: string }[] = [];
+  public pinnedRepos: { name: string; description: string }[] | undefined;
 
   constructor(private _httpClient: HttpClient) {}
 
@@ -44,7 +44,6 @@ export class AboutComponent implements OnInit {
             htmlText,
             'text/html'
           );
-
           this.updateLineChart(docHtml);
           this.updatePinned(docHtml);
         },
@@ -54,17 +53,15 @@ export class AboutComponent implements OnInit {
       );
   }
 
-  private updateLineChart(docHtml: Document) {
+  private updateLineChart(docHtml: Document): void {
     const rects = docHtml.getElementsByTagName('rect');
-
-    let timestamps = Array.from(rects).map(
+    const timestamps = Array.from(rects).map(
       (rect: SVGRectElement) =>
         rect.attributes.getNamedItem('data-date')?.nodeValue as string
     );
-    let contributions = Array.from(rects).map((rect: SVGRectElement) =>
+    const contributions = Array.from(rects).map((rect: SVGRectElement) =>
       Number(rect.attributes.getNamedItem('data-count')?.nodeValue)
     );
-
     const dateToSkip = new Date(timestamps[0]);
     const monthYearToSkip = `${dateToSkip.getMonth()}_${dateToSkip.getUTCFullYear()}`;
     const data = timestamps.reduce(
@@ -74,7 +71,6 @@ export class AboutComponent implements OnInit {
         if (monthYear === monthYearToSkip) {
           return data;
         }
-
         if (monthYear in data) {
           data[monthYear].push(contributions[index]);
         } else {
@@ -84,7 +80,6 @@ export class AboutComponent implements OnInit {
       },
       {}
     );
-
     const monthlyTimestamps = Object.keys(data).map((key: string) => {
       const [month, year] = key.split('_');
       return new Date(Number(year), Number(month), 1, 0, 0)
@@ -95,14 +90,13 @@ export class AboutComponent implements OnInit {
       value.reduce((acc: number, curr: number) => acc + curr, 0)
     );
 
+    this.lineChartLabels = monthlyTimestamps;
     this.lineChartData = [
       { data: totalContributions, label: 'Total Contributions' },
     ];
-
-    this.lineChartLabels = monthlyTimestamps;
   }
 
-  private updatePinned(docHtml: Document) {
+  private updatePinned(docHtml: Document): void {
     const repoNames: string[] = Array.from(
       docHtml.getElementsByClassName('repo')
     ).map((span: Element) => span.innerHTML.trim());
@@ -110,11 +104,9 @@ export class AboutComponent implements OnInit {
       docHtml.getElementsByClassName('pinned-item-desc')
     ).map((p: Element) => p.innerHTML.trim());
 
-    repoNames.forEach((name: string, index: number) => {
-      this.pinnedRepos.push({
-        name: name,
-        description: repoDescriptions[index],
-      });
-    });
+    this.pinnedRepos = repoNames.map((name: string, index: number) => ({
+      name: name,
+      description: repoDescriptions[index],
+    }));
   }
 }

@@ -44,11 +44,12 @@
         <a href="https://github.com/irkaal/{{ repo.name }}">
           <strong>{{ repo.name }}</strong>
         </a>
-        -
-        {{ repo.description }}
+        - {{ repo.description }}
       </li>
     </ul>
-    <a [routerLink]="['code']">View more →</a>
+    <div>
+      <a [routerLink]="['code']">View more →</a>
+    </div>
   </section>
 
   <section>
