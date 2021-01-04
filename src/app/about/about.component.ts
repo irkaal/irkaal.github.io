@@ -39,8 +39,7 @@ export class AboutComponent implements OnInit {
       })
       .subscribe(
         (htmlText: string) => {
-          const parser = new DOMParser();
-          const docHtml: Document = parser.parseFromString(
+          const docHtml: Document = new DOMParser().parseFromString(
             htmlText,
             'text/html'
           );

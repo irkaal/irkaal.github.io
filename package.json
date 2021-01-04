@@ -12,7 +12,10 @@
     "scully:serve": "scully serve",
     "serve": "rimraf docs && ng build && npm run scully -- --scanRoutes && npm run scully:serve",
     "serveprod": "rimraf docs && ng build --prod && npm run scully -- --scanRoutes && npm run scully:serve",
-    "buildprod": "rimraf docs && ng build --prod && npm run scully -- --scanRoutes"
+    "buildprod": "rimraf docs && ng build --prod && npm run scully -- --scanRoutes",
+    "commit": "npm run buildprod && git add . && git commit -m \"Updates\"",
+    "push": "npm run commit && git push",
+    "forcepush": "npm run commit && git push -f"
   },
   "private": true,
   "dependencies": {
