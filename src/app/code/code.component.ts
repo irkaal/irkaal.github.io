@@ -99,7 +99,7 @@ export class CodeComponent implements OnInit {
       <a href="https://irkaal.github.io">irkaal.github.io</a>. It uses a
       Jamstack architecture with the help of Angular and Scully.
       `,
-      repository: 'https://github.com/irkaal.github.io',
+      repository: 'https://github.com/irkaal/irkaal.github.io',
       image: 'assets/irkaal.webp',
     },
     {
