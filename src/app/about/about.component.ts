@@ -12,18 +12,18 @@ export class AboutComponent implements OnInit {
   public lineChartData: ChartDataSets[] = [];
   public lineChartLabels: Label[] = [];
   public lineChartOptions: ChartOptions = {
-    elements: { line: { tension: 0 } },
+    // elements: { line: { tension: 0 } },
     responsive: true,
     scales: { xAxes: [{ type: 'time', time: { unit: 'month' } }] },
   };
   public lineChartColors = [
     {
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: 'rgba(0,191,196,0.2)',
+      borderColor: 'rgba(0,191,196,1)',
+      pointBackgroundColor: 'rgba(0,191,196,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+      pointHoverBorderColor: 'rgba(0,191,196,0.8)',
     },
   ];
   @ViewChild(BaseChartDirective, { static: true })
