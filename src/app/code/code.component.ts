@@ -19,14 +19,35 @@ export class CodeComponent implements OnInit {
       name: 'Random Pantry 3',
       description: `
       Random Pantry 3 is an ongoing recipe sharing platform project that
-      leverages machine learning algorithms (collaborative filtering and
-      Truncated SVD with nearest neighbors) to provide personalized
+      leverages machine learning algorithms to provide personalized
       recipes recommendations to each user. This is a complete rewrite of
       Random Pantry in Python and TypeScript which aims to resolve
       problems and limitations that exist in the previous version.
       `,
       repository: 'https://github.com/irkaal/randompantry3',
       image: 'assets/randompantry3.webp',
+    },
+    {
+      name: 'COVID-19 Tracker',
+      description: `
+      Currently in development.
+      `,
+      homepage: 'https://irkaal.github.io/covid-tracker',
+      repository: 'https://github.com/irkaal/covid-tracker',
+      image: 'assets/covid-tracker.webp',
+    },
+    {
+      name: 'Triangulr',
+      description: `
+      The goal of this package is to be a high-performance alternative to
+      the popular triangle package in R. Triangulr provides functions for
+      the triangular distribution that are implemented in C++ with support
+      for Xoroshiro128+ random generator through the dqrng package.
+      Currently, I am continuously maintaining and improving the package.
+      `,
+      homepage: 'https://irkaal.github.io/triangulr',
+      repository: 'https://github.com/irkaal/triangulr',
+      image: 'assets/triangulr.webp',
     },
     {
       name: 'Recruit Restaurant Visitor Forecasting',
@@ -52,19 +73,7 @@ export class CodeComponent implements OnInit {
       repository: 'https://github.com/irkaal/foodcom-recipes-and-reviews',
       image: 'assets/foodcom-recipes-and-reviews.webp',
     },
-    {
-      name: 'Triangulr',
-      description: `
-      The goal of this package is to be a high-performance alternative to
-      the popular triangle package in R. Triangulr provides functions for
-      the triangular distribution that are implemented in C++ with support
-      for Xoroshiro128+ random generator through the dqrng package.
-      Currently, I am continuously maintaining and improving the package.
-      `,
-      homepage: 'https://irkaal.github.io/triangulr',
-      repository: 'https://github.com/irkaal/triangulr',
-      image: 'assets/triangulr.webp',
-    },
+
     {
       name: 'User Segmentation (Winners of Challenge 2)',
       description: `
