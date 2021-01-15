@@ -34,9 +34,10 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpClient
-      .get('https://cors-anywhere.herokuapp.com/https://github.com/irkaal', {
-        responseType: 'text',
-      })
+      .get(
+        'https://api.codetabs.com/v1/proxy?quest=https://github.com/irkaal',
+        { responseType: 'text' }
+      )
       .subscribe(
         (htmlText: string) => {
           const docHtml: Document = new DOMParser().parseFromString(
